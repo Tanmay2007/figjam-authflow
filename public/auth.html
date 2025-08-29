@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign In / Sign Up | Auth Portal</title>
+    <meta name="description" content="Modern, responsive login and signup form with smooth animations." />
+    <link rel="canonical" href="/auth.html" />
+
+    <!-- Inter font to match modern Figma styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="/auth.html" aria-label="Home">Auth<span>Flow</span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#signin" class="nav-link is-active" data-toggle="signin">Sign In</a>
+        <a href="#signup" class="nav-link" data-toggle="signup">Sign Up</a>
+      </nav>
+    </header>
+
+    <main class="auth-layout" role="main">
+      <!-- Left visual panel (hidden on small screens) -->
+      <aside class="visual" aria-hidden="true">
+        <div class="visual-gradient"></div>
+        <div class="visual-copy">
+          <h1 class="visual-title">Welcome back</h1>
+          <p class="visual-subtitle">Securely access your account or create a new one in seconds.</p>
+        </div>
+      </aside>
+
+      <!-- Right auth card -->
+      <section class="auth-card" aria-label="Authentication">
+        <!-- Tab switcher (mobile) -->
+        <div class="tabs" role="tablist" aria-label="Authentication tabs">
+          <button class="tab is-active" role="tab" aria-selected="true" data-toggle="signin">Sign In</button>
+          <button class="tab" role="tab" aria-selected="false" data-toggle="signup">Sign Up</button>
+        </div>
+
+        <!-- Sign In form -->
+        <article id="panel-signin" class="panel is-active" role="tabpanel" aria-labelledby="tab-signin">
+          <header class="panel-header">
+            <h2 class="panel-title">Sign In</h2>
+            <p class="panel-desc">Welcome back! Please enter your details.</p>
+          </header>
+
+          <form id="signin-form" class="form" autocomplete="on" novalidate>
+            <!-- Email -->
+            <div class="field">
+              <label class="label" for="signin-email">Email</label>
+              <div class="control has-icon">
+                <input id="signin-email" name="email" type="email" class="input" placeholder="you@example.com" required />
+              </div>
+              <p class="error" data-error-for="signin-email"></p>
+            </div>
+
+            <!-- Password -->
+            <div class="field">
+              <label class="label" for="signin-password">Password</label>
+              <div class="control has-icon with-toggle">
+                <input id="signin-password" name="password" type="password" class="input" placeholder="••••••••" required minlength="6" />
+                <button type="button" class="icon-button" aria-label="Toggle password visibility" data-toggle-password="signin-password"></button>
+              </div>
+              <p class="error" data-error-for="signin-password"></p>
+            </div>
+
+            <!-- Submit -->
+            <button class="button primary w-full" id="signin-submit" type="submit">
+              <span class="button-label">Sign In</span>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+
+            <p class="subcopy">Don't have an account? <a href="#signup" class="link" data-toggle="signup">Create one</a></p>
+          </form>
+        </article>
+
+        <!-- Sign Up form -->
+        <article id="panel-signup" class="panel" role="tabpanel" aria-labelledby="tab-signup" hidden>
+          <header class="panel-header">
+            <h2 class="panel-title">Create Account</h2>
+            <p class="panel-desc">Join us! It only takes a moment.</p>
+          </header>
+
+          <form id="signup-form" class="form" autocomplete="on" novalidate>
+            <!-- Name -->
+            <div class="field">
+              <label class="label" for="signup-name">Full Name</label>
+              <div class="control has-icon">
+                <input id="signup-name" name="name" type="text" class="input" placeholder="Jane Doe" required />
+              </div>
+              <p class="error" data-error-for="signup-name"></p>
+            </div>
+
+            <!-- Email -->
+            <div class="field">
+              <label class="label" for="signup-email">Email</label>
+              <div class="control has-icon">
+                <input id="signup-email" name="email" type="email" class="input" placeholder="you@example.com" required />
+              </div>
+              <p class="error" data-error-for="signup-email"></p>
+            </div>
+
+            <!-- Password -->
+            <div class="field">
+              <label class="label" for="signup-password">Password</label>
+              <div class="control has-icon with-toggle">
+                <input id="signup-password" name="password" type="password" class="input" placeholder="Create a password" required minlength="6" />
+                <button type="button" class="icon-button" aria-label="Toggle password visibility" data-toggle-password="signup-password"></button>
+              </div>
+              <p class="error" data-error-for="signup-password"></p>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="field">
+              <label class="label" for="signup-confirm">Confirm Password</label>
+              <div class="control has-icon with-toggle">
+                <input id="signup-confirm" name="confirm" type="password" class="input" placeholder="Re-enter your password" required minlength="6" />
+                <button type="button" class="icon-button" aria-label="Toggle password visibility" data-toggle-password="signup-confirm"></button>
+              </div>
+              <p class="error" data-error-for="signup-confirm"></p>
+            </div>
+
+            <!-- Submit -->
+            <button class="button primary w-full" id="signup-submit" type="submit">
+              <span class="button-label">Create Account</span>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+
+            <p class="subcopy">Already have an account? <a href="#signin" class="link" data-toggle="signin">Sign in</a></p>
+          </form>
+        </article>
+
+        <!-- Global form message area -->
+        <div id="message" role="status" aria-live="polite" class="message" hidden></div>
+      </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <small>© <span id="year"></span> AuthFlow. All rights reserved.</small>
+    </footer>
+
+    <!-- Config (set your SUPABASE_URL and SUPABASE_ANON_KEY here) -->
+    <script type="module" src="/config.js"></script>
+    <!-- App logic (vanilla JS, ESM) -->
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>
