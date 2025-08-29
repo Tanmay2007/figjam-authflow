@@ -71,6 +71,11 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onModeChange }) => {
           description: "Welcome! Your account has been created successfully.",
         });
       }
+      
+      // Redirect to dashboard after successful auth
+      setTimeout(() => {
+        window.location.href = '/dashboard';
+      }, 1000);
     } catch (error) {
       toast({
         title: "Authentication failed",
